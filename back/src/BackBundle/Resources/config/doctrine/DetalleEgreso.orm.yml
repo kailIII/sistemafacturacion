@@ -1,0 +1,29 @@
+BackBundle\Entity\DetalleEgreso:
+    type: entity
+    table: detalle_egreso
+    indexes:
+        FK_COM_DETEGR:
+            columns:
+                - COM_ID
+    id:
+        detegrId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: DETEGR_ID
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        com:
+            targetEntity: Compra
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                COM_ID:
+                    referencedColumnName: COM_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

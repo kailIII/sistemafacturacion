@@ -1,0 +1,38 @@
+BackBundle\Entity\Credito:
+    type: entity
+    table: credito
+    id:
+        creId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CRE_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        creNumerocuotas:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CRE_NUMEROCUOTAS
+        creFechamaximopago:
+            type: date
+            nullable: true
+            column: CRE_FECHAMAXIMOPAGO
+        creValordeuda:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: CRE_VALORDEUDA
+        creEstado:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: CRE_ESTADO
+    lifecycleCallbacks: {  }

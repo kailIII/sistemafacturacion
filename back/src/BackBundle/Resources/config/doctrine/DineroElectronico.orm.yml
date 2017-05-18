@@ -1,0 +1,43 @@
+BackBundle\Entity\DineroElectronico:
+    type: entity
+    table: dinero_electronico
+    id:
+        dineleId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: DINELE_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        dineleCelular:
+            type: string
+            nullable: true
+            length: 13
+            options:
+                fixed: true
+            column: DINELE_CELULAR
+        dineleValor:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: DINELE_VALOR
+        dineleFechapago:
+            type: date
+            nullable: true
+            column: DINELE_FECHAPAGO
+        dineleHorapago:
+            type: time
+            nullable: true
+            column: DINELE_HORAPAGO
+        dineleEstado:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: true
+            column: DINELE_ESTADO
+    lifecycleCallbacks: {  }

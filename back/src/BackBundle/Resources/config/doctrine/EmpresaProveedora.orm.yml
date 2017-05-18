@@ -1,0 +1,78 @@
+BackBundle\Entity\EmpresaProveedora:
+    type: entity
+    table: empresa_proveedora
+    id:
+        empproId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: EMPPRO_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        empproNombre:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+            column: EMPPRO_NOMBRE
+        empproDireccion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: EMPPRO_DIRECCION
+        empproTelefono1:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: EMPPRO_TELEFONO1
+        empproTelefono2:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: EMPPRO_TELEFONO2
+        empproRuc:
+            type: string
+            nullable: true
+            length: 13
+            options:
+                fixed: true
+            column: EMPPRO_RUC
+        empproCiudad:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: EMPPRO_CIUDAD
+        empproRazonsocial:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: EMPPRO_RAZONSOCIAL
+        empproFax:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: EMPPRO_FAX
+        empproMail:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: EMPPRO_MAIL
+    lifecycleCallbacks: {  }

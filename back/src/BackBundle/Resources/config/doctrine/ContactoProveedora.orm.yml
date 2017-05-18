@@ -1,0 +1,72 @@
+BackBundle\Entity\ContactoProveedora:
+    type: entity
+    table: contacto_proveedora
+    indexes:
+        FK_EMPPRO_CONPRO:
+            columns:
+                - EMPPRO_ID
+    id:
+        conproId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CONPRO_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        conproNombre:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: CONPRO_NOMBRE
+        conproApellido:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: CONPRO_APELLIDO
+        conproTelefono1:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: CONPRO_TELEFONO1
+        conproTelefono2:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: CONPRO_TELEFONO2
+        conproMail:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: CONPRO_MAIL
+        conproDescripcionvisita:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: CONPRO_DESCRIPCIONVISITA
+    manyToOne:
+        emppro:
+            targetEntity: EmpresaProveedora
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EMPPRO_ID:
+                    referencedColumnName: EMPPRO_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,135 @@
+BackBundle\Entity\FacturaVenta:
+    type: entity
+    table: factura_venta
+    indexes:
+        FK_CLI_FACVEN:
+            columns:
+                - CLI_ID
+        FK_FORPAG_FACVEN:
+            columns:
+                - FORPAG_ID
+        FK_LOCSUC_FACVEN:
+            columns:
+                - LOC_ID
+    id:
+        facvenId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: FACVEN_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        facvenNumerofactura:
+            type: string
+            nullable: true
+            length: 9
+            options:
+                fixed: true
+            column: FACVEN_NUMEROFACTURA
+        facvenSubtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_SUBTOTAL
+        facvenIva:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_IVA
+        facvenValoriva:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_VALORIVA
+        facvenValoriva0:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_VALORIVA0
+        facvenIce:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_ICE
+        facvenValorice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_VALORICE
+        facvenDescuento:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_DESCUENTO
+        facvenTotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FACVEN_TOTAL
+        facvenFecha:
+            type: date
+            nullable: true
+            column: FACVEN_FECHA
+        facvenNumeroproductos:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: FACVEN_NUMEROPRODUCTOS
+        facvenEstado:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: true
+            column: FACVEN_ESTADO
+        facvenSerie:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: true
+            column: FACVEN_SERIE
+    manyToOne:
+        cli:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CLI_ID:
+                    referencedColumnName: CLI_ID
+            orphanRemoval: false
+        forpag:
+            targetEntity: FormaPago
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FORPAG_ID:
+                    referencedColumnName: FORPAG_ID
+            orphanRemoval: false
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

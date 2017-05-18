@@ -1,0 +1,14 @@
+BackBundle\Entity\NotaDebito:
+    type: entity
+    table: nota_debito
+    id:
+        notcreId2:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: NOTCRE_ID2
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

@@ -1,0 +1,19 @@
+BackBundle\Entity\Calendario:
+    type: entity
+    table: calendario
+    id:
+        calId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CAL_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        calFecha:
+            type: date
+            nullable: true
+            column: CAL_FECHA
+    lifecycleCallbacks: {  }

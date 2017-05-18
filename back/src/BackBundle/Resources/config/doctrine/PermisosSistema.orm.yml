@@ -1,0 +1,65 @@
+BackBundle\Entity\PermisosSistema:
+    type: entity
+    table: permisos_sistema
+    indexes:
+        FK_EMPLOC_PERSIS:
+            columns:
+                - EMPLOC_ID
+        FK_PERUSUMODSIS_PERSIS:
+            columns:
+                - PUMS_ID
+    id:
+        persisId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: PERSIS_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        persisFechainicio:
+            type: date
+            nullable: true
+            column: PERSIS_FECHAINICIO
+        persisFechafin:
+            type: date
+            nullable: true
+            column: PERSIS_FECHAFIN
+        persisMotivosfin:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: PERSIS_MOTIVOSFIN
+        persisEstado:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: PERSIS_ESTADO
+    manyToOne:
+        emploc:
+            targetEntity: EmpleadoLocal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EMPLOC_ID:
+                    referencedColumnName: EMPLOC_ID
+            orphanRemoval: false
+        pums:
+            targetEntity: PerfilUsuaModSis
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PUMS_ID:
+                    referencedColumnName: PUMS_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,67 @@
+BackBundle\Entity\DetalleCredito:
+    type: entity
+    table: detalle_credito
+    indexes:
+        FK_CRE_DETCRE:
+            columns:
+                - CRE_ID
+        FK_FORPAG_DETCRE:
+            columns:
+                - FORPAG_ID
+    id:
+        detcreId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: DETCRE_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        detcreNumerocuota:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: DETCRE_NUMEROCUOTA
+        detcreValorpagado:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: DETCRE_VALORPAGADO
+        detcreFechapagado:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: DETCRE_FECHAPAGADO
+        detcreSaldodeuda:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: DETCRE_SALDODEUDA
+    manyToOne:
+        cre:
+            targetEntity: Credito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CRE_ID:
+                    referencedColumnName: CRE_ID
+            orphanRemoval: false
+        forpag:
+            targetEntity: FormaPago
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FORPAG_ID:
+                    referencedColumnName: FORPAG_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

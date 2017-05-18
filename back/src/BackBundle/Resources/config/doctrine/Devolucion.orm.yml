@@ -1,0 +1,56 @@
+BackBundle\Entity\Devolucion:
+    type: entity
+    table: devolucion
+    indexes:
+        FK_CLI_DEV:
+            columns:
+                - CLI_ID
+        FK_LOCSUC_DEV:
+            columns:
+                - LOC_ID
+    id:
+        devId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: DEV_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        devFecha:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: DEV_FECHA
+        devMotivos:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: DEV_MOTIVOS
+    manyToOne:
+        cli:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CLI_ID:
+                    referencedColumnName: CLI_ID
+            orphanRemoval: false
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

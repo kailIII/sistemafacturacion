@@ -1,0 +1,44 @@
+BackBundle\Entity\Cuenta:
+    type: entity
+    table: cuenta
+    indexes:
+        FK_BAN_CUE:
+            columns:
+                - BAN_ID
+    id:
+        cueId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CUE_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        cueNumerocuenta:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: true
+            column: CUE_NUMEROCUENTA
+        cueTipocuenta:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: CUE_TIPOCUENTA
+    manyToOne:
+        ban:
+            targetEntity: Banco
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                BAN_ID:
+                    referencedColumnName: BAN_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

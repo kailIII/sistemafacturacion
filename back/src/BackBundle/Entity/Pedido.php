@@ -1,0 +1,142 @@
+<?php
+
+namespace BackBundle\Entity;
+
+/**
+ * Pedido
+ */
+class Pedido
+{
+    /**
+     * @var integer
+     */
+    private $pedId;
+
+    /**
+     * @var \DateTime
+     */
+    private $pedFechaemision;
+
+    /**
+     * @var string
+     */
+    private $pedObservacion;
+
+    /**
+     * @var integer
+     */
+    private $locDestino;
+
+    /**
+     * @var \BackBundle\Entity\LocalSucursal
+     */
+    private $loc;
+
+
+    /**
+     * Get pedId
+     *
+     * @return integer
+     */
+    public function getPedId()
+    {
+        return $this->pedId;
+    }
+
+    /**
+     * Set pedFechaemision
+     *
+     * @param \DateTime $pedFechaemision
+     *
+     * @return Pedido
+     */
+    public function setPedFechaemision($pedFechaemision)
+    {
+        $this->pedFechaemision = $pedFechaemision;
+
+        return $this;
+    }
+
+    /**
+     * Get pedFechaemision
+     *
+     * @return \DateTime
+     */
+    public function getPedFechaemision()
+    {
+        return $this->pedFechaemision;
+    }
+
+    /**
+     * Set pedObservacion
+     *
+     * @param string $pedObservacion
+     *
+     * @return Pedido
+     */
+    public function setPedObservacion($pedObservacion)
+    {
+        $this->pedObservacion = $pedObservacion;
+
+        return $this;
+    }
+
+    /**
+     * Get pedObservacion
+     *
+     * @return string
+     */
+    public function getPedObservacion()
+    {
+        return $this->pedObservacion;
+    }
+
+    /**
+     * Set locDestino
+     *
+     * @param integer $locDestino
+     *
+     * @return Pedido
+     */
+    public function setLocDestino($locDestino)
+    {
+        $this->locDestino = $locDestino;
+
+        return $this;
+    }
+
+    /**
+     * Get locDestino
+     *
+     * @return integer
+     */
+    public function getLocDestino()
+    {
+        return $this->locDestino;
+    }
+
+    /**
+     * Set loc
+     *
+     * @param \BackBundle\Entity\LocalSucursal $loc
+     *
+     * @return Pedido
+     */
+    public function setLoc(\BackBundle\Entity\LocalSucursal $loc = null)
+    {
+        $this->loc = $loc;
+
+        return $this;
+    }
+
+    /**
+     * Get loc
+     *
+     * @return \BackBundle\Entity\LocalSucursal
+     */
+    public function getLoc()
+    {
+        return $this->loc;
+    }
+}
+

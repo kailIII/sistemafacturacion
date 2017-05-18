@@ -1,0 +1,50 @@
+BackBundle\Entity\Almacen:
+    type: entity
+    table: almacen
+    id:
+        almId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ALM_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        almNombre:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+            column: ALM_NOMBRE
+        almRuc:
+            type: string
+            nullable: true
+            length: 13
+            options:
+                fixed: true
+            column: ALM_RUC
+        almWeb:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: ALM_WEB
+        almMail:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: ALM_MAIL
+        almLogo:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: ALM_LOGO
+    lifecycleCallbacks: {  }

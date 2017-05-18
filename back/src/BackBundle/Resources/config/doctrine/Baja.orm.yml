@@ -1,0 +1,43 @@
+BackBundle\Entity\Baja:
+    type: entity
+    table: baja
+    indexes:
+        FK_LOCSUC_BAJ:
+            columns:
+                - LOC_ID
+    id:
+        bajId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: BAJ_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        bajFecha:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: BAJ_FECHA
+        bajObservacion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: BAJ_OBSERVACION
+    manyToOne:
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
