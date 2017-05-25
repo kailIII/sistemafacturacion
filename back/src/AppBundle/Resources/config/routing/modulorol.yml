@@ -1,5 +1,0 @@
-modulorol_buscar:
-    path:   /buscar
-    defaults: { _controller: "AppBundle:ModuloRol:buscar"}
-    methods:  POST
-    

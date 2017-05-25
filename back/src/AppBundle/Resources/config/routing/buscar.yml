@@ -1,9 +1,0 @@
-buscar_persona:
-    path:   /persona
-    defaults: { _controller: "AppBundle:Buscar:persona"}
-    methods:  GET
-    
-buscar_ciudad:
-    path:   /ciudad
-    defaults: { _controller: "AppBundle:Buscar:ciudad"}
-    methods:  GET
