@@ -1,0 +1,70 @@
+DataBundle\Entity\Movilizacion:
+    type: entity
+    table: movilizacion
+    indexes:
+        FK_CAL_MOV:
+            columns:
+                - CAL_ID
+        FK_LOC_MOV:
+            columns:
+                - LOCA_ID
+        FK_VEH_MOV:
+            columns:
+                - VEH_ID
+    id:
+        movId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MOV_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        movRuta:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: MOV_RUTA
+        movEstado:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: MOV_ESTADO
+    manyToOne:
+        cal:
+            targetEntity: Calendario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CAL_ID:
+                    referencedColumnName: CAL_ID
+            orphanRemoval: false
+        loca:
+            targetEntity: Localidad
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOCA_ID:
+                    referencedColumnName: LOCA_ID
+            orphanRemoval: false
+        veh:
+            targetEntity: Vehiculo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                VEH_ID:
+                    referencedColumnName: VEH_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

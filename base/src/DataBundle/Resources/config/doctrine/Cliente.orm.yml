@@ -1,0 +1,93 @@
+DataBundle\Entity\Cliente:
+    type: entity
+    table: cliente
+    indexes:
+        FK_CLICAT_CLI:
+            columns:
+                - CLICAT_ID
+    id:
+        cliId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CLI_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        cliNombre:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: true
+            column: CLI_NOMBRE
+        cliApellido:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: true
+            column: CLI_APELLIDO
+        cliDireccion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: true
+            column: CLI_DIRECCION
+        cliIdentificacion:
+            type: string
+            nullable: true
+            length: 13
+            options:
+                fixed: true
+            column: CLI_IDENTIFICACION
+        cliTipoidentificacion:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: true
+            column: CLI_TIPOIDENTIFICACION
+        cliTelefono1:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: true
+            column: CLI_TELEFONO1
+        cliTelefono2:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: true
+            column: CLI_TELEFONO2
+        cliTelefono3:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: true
+            column: CLI_TELEFONO3
+        cliMail:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: true
+            column: CLI_MAIL
+    manyToOne:
+        clicat:
+            targetEntity: ClienteCategoria
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CLICAT_ID:
+                    referencedColumnName: CLICAT_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

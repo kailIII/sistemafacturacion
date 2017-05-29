@@ -1,0 +1,50 @@
+DataBundle\Entity\Georeferencia:
+    type: entity
+    table: georeferencia
+    id:
+        geoId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: GEO_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        geoCiudad:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: GEO_CIUDAD
+        geoProvincia:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: GEO_PROVINCIA
+        geoRegion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: GEO_REGION
+        geoPais:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: GEO_PAIS
+        geoSector:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: GEO_SECTOR
+    lifecycleCallbacks: {  }

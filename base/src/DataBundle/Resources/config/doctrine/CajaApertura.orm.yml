@@ -1,0 +1,114 @@
+DataBundle\Entity\CajaApertura:
+    type: entity
+    table: caja_apertura
+    indexes:
+        FK_CAJ_CAJAPE:
+            columns:
+                - CAJ_ID
+    id:
+        cajapeId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CAJAPE_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        cajapeFecha:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: CAJAPE_FECHA
+        cajape1cent:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_1CENT
+        cajape5cent:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_5CENT
+        cajape10cent:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_10CENT
+        cajape25cent:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_25CENT
+        cajape50cent:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_50CENT
+        cajape1dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_1DOL
+        cajape2dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_2DOL
+        cajape5dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_5DOL
+        cajape10dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_10DOL
+        cajape20dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_20DOL
+        cajape50dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_50DOL
+        cajape100dol:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CAJAPE_100DOL
+        cajapeTotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: CAJAPE_TOTAL
+    manyToOne:
+        caj:
+            targetEntity: Caja
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CAJ_ID:
+                    referencedColumnName: CAJ_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

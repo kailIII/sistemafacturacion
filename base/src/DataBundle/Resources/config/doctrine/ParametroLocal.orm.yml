@@ -1,0 +1,51 @@
+DataBundle\Entity\ParametroLocal:
+    type: entity
+    table: parametro_local
+    indexes:
+        FK_PAR_PARLOC:
+            columns:
+                - PAR_ID
+    id:
+        parlocId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: PARLOC_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        parlocValor:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: PARLOC_VALOR
+        parlocFechahabilitado:
+            type: date
+            nullable: true
+            column: PARLOC_FECHAHABILITADO
+        parlocFechadeshabilitado:
+            type: date
+            nullable: true
+            column: PARLOC_FECHADESHABILITADO
+        parlocEstado:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: PARLOC_ESTADO
+    manyToOne:
+        par:
+            targetEntity: Parametro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PAR_ID:
+                    referencedColumnName: PAR_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

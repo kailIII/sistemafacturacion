@@ -1,0 +1,78 @@
+DataBundle\Entity\EmpleadoLocal:
+    type: entity
+    table: empleado_local
+    indexes:
+        FK_CAR_EMPLOC:
+            columns:
+                - CAR_ID
+        FK_EMP_EMPLOC:
+            columns:
+                - EMP_ID
+        FK_LOC_EMPLOC:
+            columns:
+                - LOC_ID
+    id:
+        emplocId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: EMPLOC_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        emplocFechaingreso:
+            type: date
+            nullable: true
+            column: EMPLOC_FECHAINGRESO
+        emplocFechasalida:
+            type: date
+            nullable: true
+            column: EMPLOC_FECHASALIDA
+        emplocMotivosalida:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: EMPLOC_MOTIVOSALIDA
+        emplocEstado:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: EMPLOC_ESTADO
+    manyToOne:
+        car:
+            targetEntity: Cargo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CAR_ID:
+                    referencedColumnName: CAR_ID
+            orphanRemoval: false
+        emp:
+            targetEntity: Empleado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EMP_ID:
+                    referencedColumnName: EMP_ID
+            orphanRemoval: false
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,122 @@
+DataBundle\Entity\Gasto:
+    type: entity
+    table: gasto
+    indexes:
+        FK_EMPLOC_GAS:
+            columns:
+                - EMPLOC_ID
+        FK_LOCSUC_GAS:
+            columns:
+                - LOC_ID
+        FK_LOC_GAS:
+            columns:
+                - LOCA_ID
+    id:
+        gasId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: GAS_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        gasNumero:
+            type: string
+            nullable: true
+            length: 9
+            options:
+                fixed: true
+            column: GAS_NUMERO
+        gasFecha:
+            type: date
+            nullable: true
+            column: GAS_FECHA
+        gasSubtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GAS_SUBTOTAL
+        gasIva:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: GAS_IVA
+        gasValoriva:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GAS_VALORIVA
+        gasValoriva0:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GAS_VALORIVA0
+        gasIce:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: GAS_ICE
+        gasValorice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GAS_VALORICE
+        gasDescuento:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GAS_DESCUENTO
+        gasTotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GAS_TOTAL
+        gasEstado:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: true
+            column: GAS_ESTADO
+    manyToOne:
+        emploc:
+            targetEntity: EmpleadoLocal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EMPLOC_ID:
+                    referencedColumnName: EMPLOC_ID
+            orphanRemoval: false
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+        loca:
+            targetEntity: Localidad
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOCA_ID:
+                    referencedColumnName: LOCA_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

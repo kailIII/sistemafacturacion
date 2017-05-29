@@ -1,0 +1,50 @@
+DataBundle\Entity\PerfilUsuaModSis:
+    type: entity
+    table: perfil_usua_mod_sis
+    indexes:
+        FK_MODSIS_PERUSUMODSIS:
+            columns:
+                - MODSIS_ID
+        FK_PERUSU_PERUSUMODSIS:
+            columns:
+                - PERUSU_ID
+    id:
+        pumsId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: PUMS_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        pumsDescripcion:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: PUMS_DESCRIPCION
+    manyToOne:
+        modsis:
+            targetEntity: ModuloSistema
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                MODSIS_ID:
+                    referencedColumnName: MODSIS_ID
+            orphanRemoval: false
+        perusu:
+            targetEntity: PerfilUsuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERUSU_ID:
+                    referencedColumnName: PERUSU_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

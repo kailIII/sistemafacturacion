@@ -1,0 +1,44 @@
+DataBundle\Entity\AccesoUsuario:
+    type: entity
+    table: acceso_usuario
+    indexes:
+        FK_EMP_ACCUSU:
+            columns:
+                - EMP_ID
+    id:
+        accId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ACC_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        accNombreusuario:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: ACC_NOMBREUSUARIO
+        accClaveusuario:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: ACC_CLAVEUSUARIO
+    manyToOne:
+        emp:
+            targetEntity: Empleado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EMP_ID:
+                    referencedColumnName: EMP_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

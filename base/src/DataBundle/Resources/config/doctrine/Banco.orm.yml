@@ -1,0 +1,29 @@
+DataBundle\Entity\Banco:
+    type: entity
+    table: banco
+    id:
+        banId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: BAN_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        banNombre:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: true
+            column: BAN_NOMBRE
+        banDescripcion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: true
+            column: BAN_DESCRIPCION
+    lifecycleCallbacks: {  }

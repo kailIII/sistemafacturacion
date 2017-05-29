@@ -1,0 +1,27 @@
+DataBundle\Entity\Venta:
+    type: entity
+    table: venta
+    id:
+        venId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: VEN_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        venFecha:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: VEN_FECHA
+        venTotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: VEN_TOTAL
+    lifecycleCallbacks: {  }

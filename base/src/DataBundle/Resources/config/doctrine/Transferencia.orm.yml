@@ -1,0 +1,47 @@
+DataBundle\Entity\Transferencia:
+    type: entity
+    table: transferencia
+    indexes:
+        FK_CUE_TRA:
+            columns:
+                - CUE_ID
+    id:
+        traId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: TRA_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        traNumerodocumento:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: true
+            column: TRA_NUMERODOCUMENTO
+        traFecha:
+            type: date
+            nullable: true
+            column: TRA_FECHA
+        traValor:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: TRA_VALOR
+    manyToOne:
+        cue:
+            targetEntity: Cuenta
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CUE_ID:
+                    referencedColumnName: CUE_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

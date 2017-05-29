@@ -1,0 +1,47 @@
+DataBundle\Entity\Pedido:
+    type: entity
+    table: pedido
+    indexes:
+        FK_LOCSUC_PED:
+            columns:
+                - LOC_ID
+    id:
+        pedId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: PED_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        pedFechaemision:
+            type: date
+            nullable: true
+            column: PED_FECHAEMISION
+        pedObservacion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: PED_OBSERVACION
+        locDestino:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: LOC_DESTINO
+    manyToOne:
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

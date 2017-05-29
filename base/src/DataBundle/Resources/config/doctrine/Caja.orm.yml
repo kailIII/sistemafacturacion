@@ -1,0 +1,49 @@
+DataBundle\Entity\Caja:
+    type: entity
+    table: caja
+    indexes:
+        FK_LOCSUC_CAJ:
+            columns:
+                - LOC_ID
+    id:
+        cajId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CAJ_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        cajFecha:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: CAJ_FECHA
+        cajValor:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: CAJ_VALOR
+        cajEstado:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: CAJ_ESTADO
+    manyToOne:
+        loc:
+            targetEntity: LocalSucursal
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                LOC_ID:
+                    referencedColumnName: LOC_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

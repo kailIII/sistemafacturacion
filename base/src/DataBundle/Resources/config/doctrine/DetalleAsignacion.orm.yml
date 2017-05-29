@@ -1,0 +1,49 @@
+DataBundle\Entity\DetalleAsignacion:
+    type: entity
+    table: detalle_asignacion
+    indexes:
+        FK_ASIPRO_DETASI:
+            columns:
+                - ASIPRO_ID
+        FK_PRO_DETASI:
+            columns:
+                - PRO_ID2
+    id:
+        detasiId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: DETASI_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        detasiCantidad:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: DETASI_CANTIDAD
+    manyToOne:
+        asipro:
+            targetEntity: AsignacionProducto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ASIPRO_ID:
+                    referencedColumnName: ASIPRO_ID
+            orphanRemoval: false
+        pro2:
+            targetEntity: Producto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PRO_ID2:
+                    referencedColumnName: PRO_ID2
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

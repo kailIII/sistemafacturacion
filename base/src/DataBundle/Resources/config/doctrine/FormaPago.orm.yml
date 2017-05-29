@@ -1,0 +1,125 @@
+DataBundle\Entity\FormaPago:
+    type: entity
+    table: forma_pago
+    indexes:
+        FK_CHE_FORPAG:
+            columns:
+                - CHE_ID
+        FK_CRE_FORPAG:
+            columns:
+                - CRE_ID
+        FK_DINELE_FORPAG:
+            columns:
+                - DINELE_ID
+        FK_EFE_FORPAG:
+            columns:
+                - EFE_ID
+        FK_NOTCRE_FORPAG:
+            columns:
+                - NOTCRE_ID
+        FK_NOTDEB_FORPAG:
+            columns:
+                - NOTCRE_ID2
+        FK_TRA_FORPAG:
+            columns:
+                - TRA_ID
+    id:
+        forpagId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: FORPAG_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        forpagTotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: FORPAG_TOTAL
+        forpagFecha:
+            type: date
+            nullable: true
+            column: FORPAG_FECHA
+        forpagEstado:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: true
+            column: FORPAG_ESTADO
+    manyToOne:
+        che:
+            targetEntity: Cheque
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CHE_ID:
+                    referencedColumnName: CHE_ID
+            orphanRemoval: false
+        cre:
+            targetEntity: Credito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CRE_ID:
+                    referencedColumnName: CRE_ID
+            orphanRemoval: false
+        dinele:
+            targetEntity: DineroElectronico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DINELE_ID:
+                    referencedColumnName: DINELE_ID
+            orphanRemoval: false
+        efe:
+            targetEntity: Efectivo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EFE_ID:
+                    referencedColumnName: EFE_ID
+            orphanRemoval: false
+        notcre:
+            targetEntity: NotaCredito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NOTCRE_ID:
+                    referencedColumnName: NOTCRE_ID
+            orphanRemoval: false
+        notcre2:
+            targetEntity: NotaDebito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NOTCRE_ID2:
+                    referencedColumnName: NOTCRE_ID2
+            orphanRemoval: false
+        tra:
+            targetEntity: Transferencia
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TRA_ID:
+                    referencedColumnName: TRA_ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

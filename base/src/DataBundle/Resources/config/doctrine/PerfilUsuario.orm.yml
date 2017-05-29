@@ -1,0 +1,29 @@
+DataBundle\Entity\PerfilUsuario:
+    type: entity
+    table: perfil_usuario
+    id:
+        perusuId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: PERUSU_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        perusuNombre:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: PERUSU_NOMBRE
+        perusuDescripcion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: PERUSU_DESCRIPCION
+    lifecycleCallbacks: {  }

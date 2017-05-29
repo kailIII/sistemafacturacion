@@ -1,0 +1,61 @@
+DataBundle\Entity\DetalleCotizacion:
+    type: entity
+    table: detalle_cotizacion
+    indexes:
+        FK_COT_DETCOT:
+            columns:
+                - COT_ID
+        FK_PRO_DETCOT:
+            columns:
+                - PRO_ID2
+    id:
+        detcotId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: DETCOT_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        detcotCantidad:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: DETCOT_CANTIDAD
+        detcotValorunitario:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: DETCOT_VALORUNITARIO
+        detcotValortotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: DETCOT_VALORTOTAL
+    manyToOne:
+        cot:
+            targetEntity: Cotizacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                COT_ID:
+                    referencedColumnName: COT_ID
+            orphanRemoval: false
+        pro2:
+            targetEntity: Producto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PRO_ID2:
+                    referencedColumnName: PRO_ID2
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
