@@ -36,12 +36,13 @@ export class LoginComponent implements OnInit {
 	ngOnInit(){
 		this.errorMsg = false;
 		this.user = {
-			'email': "",
+			'cedula': "",
 			'password': "",
 			'gethash': "false"
 		};
 	}
 	onSubmit(){
+		console.log(this.user);
 		this._loginService.signup(this.user).subscribe(
 			response => {
 				let identity = response;

@@ -6,7 +6,7 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class LoginService{
 
-	public url = "http://localhost/sistema_viaticos/back/web/app_dev.php";
+	public url = "http://localhost/sistemafacturacion/base/web/app_dev.php";
 	public identity;
 	public token;
 	public je;

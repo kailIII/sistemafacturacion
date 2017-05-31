@@ -22,32 +22,40 @@ class DefaultController extends Controller {
         $json = $request->get("json", null);
         if ($json != null) {
             $params = json_decode($json);
-            $email = (isset($params->email)) ? $params->email : null;
+            $cedula = (isset($params->cedula)) ? $params->cedula : null;
             $password = (isset($params->password)) ? $params->password : null;
             $getHash = (isset($params->gethash)) ? $params->gethash : null;
-            $emailContraint = new Assert\Email();
-            $emailContraint->message = "This email is not valid !!";
-            $validate_email = $this->get("validator")->validate($email, $emailContraint);
+            // $emailContraint = new Assert\Email();
+            // $emailContraint->message = "This email is not valid !!";
+            // $validate_email = $this->get("validator")->validate($email, $emailContraint);
 
             $pwd = hash('sha256', $password);
+
+            // return ($helpers->json($cedula));
             
-            if (count($validate_email) == 0 && $password != null) {
+            // if (count($validate_email) == 0 && $password != null) {
+            if ($cedula != null && $password != null) {
+
+                // return $helpers->json($cedula);
+                // return $helpers->json($getHash);
+
+
                 if ($getHash == null || $getHash == "false") {
-                    $signup = $jwt_auth->signup($email, $pwd);
+                    $signup = $jwt_auth->signup($cedula, $pwd);
                 } else {
-                    $signup = $jwt_auth->signup($email, $pwd, true);
+                    $signup = $jwt_auth->signup($cedula, $pwd, true);
                 }
                 return new JsonResponse($signup);
             } else {
                 return $helpers->json(array(
                             "status" => "error",
-                            "data" => "Login not valid!!"
+                            "data" => "Logeo no valido!!"
                 ));
             }
         } else {
             return $helpers->json(array(
                         "status" => "error",
-                        "data" => "Send json with post !!"
+                        "data" => "Enviar datos correctos !!"
             ));
         }
     }

@@ -15,7 +15,7 @@ require("rxjs/add/operator/map");
 var SolicitudService = (function () {
     function SolicitudService(_http) {
         this._http = _http;
-        this.url = "http://localhost/sistema_viaticos/back/web/app_dev.php";
+        this.url = "http://localhost/sistemafacturacion/base/web/app_dev.php";
     }
     SolicitudService.prototype.GetCiudad = function () {
         // let json = JSON.stringify(user_to_login);

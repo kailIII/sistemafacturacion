@@ -23,13 +23,14 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
         this.errorMsg = false;
         this.user = {
-            'email': "",
+            'cedula': "",
             'password': "",
             'gethash': "false"
         };
     };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
+        console.log(this.user);
         this._loginService.signup(this.user).subscribe(function (response) {
             var identity = response;
             _this.identity = identity;

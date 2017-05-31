@@ -15,7 +15,7 @@ require("rxjs/add/operator/map");
 var LoginService = (function () {
     function LoginService(_http) {
         this._http = _http;
-        this.url = "http://localhost/sistema_viaticos/back/web/app_dev.php";
+        this.url = "http://localhost/sistemafacturacion/base/web/app_dev.php";
     }
     LoginService.prototype.signup = function (user_to_login) {
         var json = JSON.stringify(user_to_login);

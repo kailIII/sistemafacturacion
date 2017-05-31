@@ -16,12 +16,12 @@ class JwtAuth {
         $this->key = "Sbe_facturacion";
     }
 
-    public function signup($email, $password, $getHash = NULL) {
+    public function signup($cedula, $password, $getHash = NULL) {
         $key = $this->key;
 
         $user = $this->manager->getRepository('DataBundle:AccesoUsuario')->findOneBy(
                 array(
-                    "accNombreusuario" => $email,
+                    "accNombreusuario" => $cedula,
                     "accClaveusuario" => $password
                 )
         );
@@ -53,6 +53,9 @@ class JwtAuth {
             );
             $jwt = JWT::encode($token, $key, 'HS256');
             $decoded = JWT::decode($jwt, $key, array('HS256'));
+            // return $helpers->json($getHash);
+                // return $jwt;
+            
             if ($getHash != null) {
                 return $jwt;
             } else {
