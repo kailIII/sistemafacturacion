@@ -17,10 +17,11 @@ export class LoginService{
 		let json = JSON.stringify(user_to_login);
 		let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+	
+		// console.log(headers);
 
 		return this._http.post(this.url+"/login", params, {headers: headers})
 		.map(res => res.json());
-
 	}
 
 	getIdentity(){
@@ -35,18 +36,18 @@ export class LoginService{
 		return this.identity;
 	}
 
-	getJe(){
-		let je = localStorage.getItem('je');
-		// console.log(je);
-		// let identity = JSON.parse(sessionStorage.getItem('identity'));
-		if(je != "undefined"){
-			this.je = je;
-		}else{
-			this.je = null;
-		}
+	// getJe(){
+	// 	let je = localStorage.getItem('je');
+	// 	// console.log(je);
+	// 	// let identity = JSON.parse(sessionStorage.getItem('identity'));
+	// 	if(je != "undefined"){
+	// 		this.je = je;
+	// 	}else{
+	// 		this.je = null;
+	// 	}
 
-		return this.je;
-	}
+	// 	return this.je;
+	// }
 
 	getToken(){
 		let token = localStorage.getItem('token');
@@ -70,42 +71,42 @@ export class LoginService{
 		.map(res => res.json());
 	} 
 
-	menuUsuario(user_to_search){
-		let json = JSON.stringify(user_to_search);
-		let params = "json="+json+"&authorization="+this.getToken();
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+	// menuUsuario(user_to_search){
+	// 	let json = JSON.stringify(user_to_search);
+	// 	let params = "json="+json+"&authorization="+this.getToken();
+	// 	let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post(this.url+"/modulo_rol/buscar", params, {headers: headers})
-		.map(res => res.json());
+	// 	return this._http.post(this.url+"/modulo_rol/buscar", params, {headers: headers})
+	// 	.map(res => res.json());
 
-	}
+	// }
 
-	register(user_to_register){
-		let json = JSON.stringify(user_to_register);
-		let params = "json="+json;
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+	// register(user_to_register){
+	// 	let json = JSON.stringify(user_to_register);
+	// 	let params = "json="+json;
+	// 	let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post(this.url+"/user/new", params, {headers: headers})
-		.map(res => res.json());
+	// 	return this._http.post(this.url+"/user/new", params, {headers: headers})
+	// 	.map(res => res.json());
 
-	}
+	// }
 
-	update_user(user_to_update){
-		let json = JSON.stringify(user_to_update);
-		let params = "json="+json+"&authorization="+this.getToken();
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+	// update_user(user_to_update){
+	// 	let json = JSON.stringify(user_to_update);
+	// 	let params = "json="+json+"&authorization="+this.getToken();
+	// 	let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post(this.url+"/user/edit", params, {headers: headers})
-		.map(res => res.json());
+	// 	return this._http.post(this.url+"/user/edit", params, {headers: headers})
+	// 	.map(res => res.json());
 
-	}
-	ver_user(user_to_view){
-		let json = JSON.stringify(user_to_view);
-		let params = "json="+json+"&authorization="+this.getToken();
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+	// }
+	// ver_user(user_to_view){
+	// 	let json = JSON.stringify(user_to_view);
+	// 	let params = "json="+json+"&authorization="+this.getToken();
+	// 	let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post(this.url+"/persona/ver", params, {headers: headers})
-		.map(res => res.json());
+	// 	return this._http.post(this.url+"/persona/ver", params, {headers: headers})
+	// 	.map(res => res.json());
 
-	}
+	// }
 }

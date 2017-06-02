@@ -30,10 +30,11 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
-        console.log(this.user);
+        // console.log(this.user);
         this._loginService.signup(this.user).subscribe(function (response) {
             var identity = response;
             _this.identity = identity;
+            // console.log(this.identity);
             if (_this.identity.length <= 1) {
                 alert("Error en el servidor 4");
             }
@@ -57,25 +58,25 @@ var LoginComponent = (function () {
                                     _this.funcionario = {
                                         'fun_id': _this.identity.sub
                                     };
-                                    _this._solicitudService.jefeSolicitud(_this.token, _this.funcionario).subscribe(function (response) {
-                                        var info = response;
-                                        _this.info15 = info;
-                                        if (_this.info15 > 0) {
-                                            localStorage.setItem('je', "S");
-                                            // this.je="S";
-                                        }
-                                        else {
-                                            localStorage.setItem('je', "N");
-                                            // this.je="N";
-                                        }
-                                        window.location.href = '/principal';
-                                    }, function (error) {
-                                        _this.errorMessage = error;
-                                        if (_this.errorMessage != null) {
-                                            console.log(_this.errorMessage);
-                                            alert("Error en la peticion de solicitudes");
-                                        }
-                                    });
+                                    // this._solicitudService.jefeSolicitud(this.token,this.funcionario).subscribe(
+                                    // 	response => {
+                                    // 		let info = response;
+                                    // 		this.info15 = info;
+                                    // 		if(this.info15 > 0){
+                                    // 			localStorage.setItem('je', "S");
+                                    // 			// this.je="S";
+                                    // 		}else{
+                                    // 			localStorage.setItem('je', "N");
+                                    // 			// this.je="N";
+                                    // 		}
+                                    window.location.href = '/principal';
+                                    // },error => {
+                                    // 					this.errorMessage = <any>error;
+                                    // 					if(this.errorMessage != null){
+                                    // 						console.log(this.errorMessage);
+                                    // 						alert("Error en la peticion de solicitudes");
+                                    // 					}
+                                    // 				});
                                 }
                                 else {
                                     // this._router.navigate(['/']);

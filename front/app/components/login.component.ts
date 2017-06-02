@@ -42,11 +42,12 @@ export class LoginComponent implements OnInit {
 		};
 	}
 	onSubmit(){
-		console.log(this.user);
+		// console.log(this.user);
 		this._loginService.signup(this.user).subscribe(
 			response => {
 				let identity = response;
 				this.identity = identity;
+				// console.log(this.identity);
 				if(this.identity.length <=1){
 					alert("Error en el servidor 4");
 				}else{ 	
@@ -70,25 +71,25 @@ export class LoginComponent implements OnInit {
 											this.funcionario = {
 													'fun_id': this.identity.sub
 												};
-												this._solicitudService.jefeSolicitud(this.token,this.funcionario).subscribe(
-													response => {
-														let info = response;
-														this.info15 = info;
-														if(this.info15 > 0){
-															localStorage.setItem('je', "S");
-															// this.je="S";
-														}else{
-															localStorage.setItem('je', "N");
-															// this.je="N";
-														}
+												// this._solicitudService.jefeSolicitud(this.token,this.funcionario).subscribe(
+												// 	response => {
+												// 		let info = response;
+												// 		this.info15 = info;
+												// 		if(this.info15 > 0){
+												// 			localStorage.setItem('je', "S");
+												// 			// this.je="S";
+												// 		}else{
+												// 			localStorage.setItem('je', "N");
+												// 			// this.je="N";
+												// 		}
 											window.location.href='/principal';
-											},error => {
-																this.errorMessage = <any>error;
-																if(this.errorMessage != null){
-																	console.log(this.errorMessage);
-																	alert("Error en la peticion de solicitudes");
-																}
-															});
+											// },error => {
+											// 					this.errorMessage = <any>error;
+											// 					if(this.errorMessage != null){
+											// 						console.log(this.errorMessage);
+											// 						alert("Error en la peticion de solicitudes");
+											// 					}
+											// 				});
 
 										 }else{
 										 	// this._router.navigate(['/']);

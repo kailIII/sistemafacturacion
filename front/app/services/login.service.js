@@ -21,6 +21,7 @@ var LoginService = (function () {
         var json = JSON.stringify(user_to_login);
         var params = "json=" + json;
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        // console.log(headers);
         return this._http.post(this.url + "/login", params, { headers: headers })
             .map(function (res) { return res.json(); });
     };
@@ -35,18 +36,17 @@ var LoginService = (function () {
         }
         return this.identity;
     };
-    LoginService.prototype.getJe = function () {
-        var je = localStorage.getItem('je');
-        // console.log(je);
-        // let identity = JSON.parse(sessionStorage.getItem('identity'));
-        if (je != "undefined") {
-            this.je = je;
-        }
-        else {
-            this.je = null;
-        }
-        return this.je;
-    };
+    // getJe(){
+    // 	let je = localStorage.getItem('je');
+    // 	// console.log(je);
+    // 	// let identity = JSON.parse(sessionStorage.getItem('identity'));
+    // 	if(je != "undefined"){
+    // 		this.je = je;
+    // 	}else{
+    // 		this.je = null;
+    // 	}
+    // 	return this.je;
+    // }
     LoginService.prototype.getToken = function () {
         var token = localStorage.getItem('token');
         // let token = sessionStorage.getItem('token');
@@ -63,34 +63,6 @@ var LoginService = (function () {
         var params = "authorizarion=" + token;
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return this._http.post(this.url + "/revisar", params, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    LoginService.prototype.menuUsuario = function (user_to_search) {
-        var json = JSON.stringify(user_to_search);
-        var params = "json=" + json + "&authorization=" + this.getToken();
-        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        return this._http.post(this.url + "/modulo_rol/buscar", params, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    LoginService.prototype.register = function (user_to_register) {
-        var json = JSON.stringify(user_to_register);
-        var params = "json=" + json;
-        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        return this._http.post(this.url + "/user/new", params, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    LoginService.prototype.update_user = function (user_to_update) {
-        var json = JSON.stringify(user_to_update);
-        var params = "json=" + json + "&authorization=" + this.getToken();
-        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        return this._http.post(this.url + "/user/edit", params, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    LoginService.prototype.ver_user = function (user_to_view) {
-        var json = JSON.stringify(user_to_view);
-        var params = "json=" + json + "&authorization=" + this.getToken();
-        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        return this._http.post(this.url + "/persona/ver", params, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return LoginService;

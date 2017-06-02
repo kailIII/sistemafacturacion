@@ -13,6 +13,15 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var login_component_1 = require("./components/login.component");
 var principal_component_1 = require("./components/principal.component");
+var nalmacen_component_1 = require("./components/nalmacen.component");
+var nlocal_component_1 = require("./components/nlocal.component");
+var nempleado_component_1 = require("./components/nempleado.component");
+var nproveedor_component_1 = require("./components/nproveedor.component");
+var nproducto_component_1 = require("./components/nproducto.component");
+var ncompra_component_1 = require("./components/ncompra.component");
+var nventa_component_1 = require("./components/nventa.component");
+var vinventario_component_1 = require("./components/vinventario.component");
+var nsucursal_component_1 = require("./components/nsucursal.component");
 var app_routing_1 = require("./app.routing");
 // import {EditorModule, SharedModule, MultiSelectModule,CalendarModule, DropdownModule,TabViewModule,DataTableModule, PanelModule} from 'primeng/primeng';
 var common_1 = require("@angular/common");
@@ -48,7 +57,16 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             login_component_1.LoginComponent,
-            principal_component_1.PrincipalComponent
+            principal_component_1.PrincipalComponent,
+            nalmacen_component_1.NalmacenComponent,
+            nlocal_component_1.NlocalComponent,
+            nempleado_component_1.NempleadoComponent,
+            nproveedor_component_1.NproveedorComponent,
+            nproducto_component_1.NproductoComponent,
+            ncompra_component_1.NcompraComponent,
+            nventa_component_1.NventaComponent,
+            vinventario_component_1.VinventarioComponent,
+            nsucursal_component_1.NsucursalComponent
         ],
         providers: [app_routing_1.appRoutingProviders],
         bootstrap: [app_component_1.AppComponent],

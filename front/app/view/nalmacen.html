@@ -1,0 +1,76 @@
+{{titulo}}
+<br>
+<form (ngSubmit)="OnGuardarAlmacen()" #AlmacenForm="ngForm">
+<!-- Seccion 1 -Datos Almacen-->
+	<div>
+	<label>Datos Almacen</label>
+		<div>
+			<label>Nombre :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>RUC :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Dirección :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Telefono 1 :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Telefono 2 :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Correo electrónico :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Página Web :</label>
+			<input type="text">
+		</div>
+		<button>Ingresar Matriz</button>
+	</div>
+	<!-- Seccion 2 - Sucursales almacen-->
+		<div>
+		<label>Datos Matriz</label>
+		<input type="checkbox">
+		<div>
+			<label>Nombre :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Ciudad :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Sector :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Dirección :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Telefono 1 :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Telefono 2 :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Correo electrónico :</label>
+			<input type="text">
+		</div>
+	</div>
+	<br>
+	<input type="submit" value="Guardar y Salir" class="btn btn-primary"/>
+	<button type="button" (click)="OnMasSucursal()">Ingresar sucursales</button>
+	<!-- <button (click)="OnMasSucursal()">Ingresar sucursales</button> -->
+
+	<!-- <button type="submit" class="btn btn-primary"/>Enviar</button> -->
+</form>

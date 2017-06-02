@@ -31,7 +31,7 @@ var AppComponent = (function () {
         };
         this.identity = this._loginService.getIdentity();
         if (this.identity) {
-            this.menuUsuario();
+            // this.menuUsuario();
             this.OnCuenta();
         }
         // else{
@@ -39,132 +39,129 @@ var AppComponent = (function () {
         // 	this.logout();
         // }
     };
-    AppComponent.prototype.menuUsuario = function () {
-        var _this = this;
-        this.identity = this._loginService.getIdentity();
-        this.token = this._loginService.getToken();
-        if (this._loginService.checkCredentials(this.token)) {
-            this.idfuncionario = {
-                'id_fun': this.identity.sub
-            };
-            this._loginService.menuUsuario(this.idfuncionario).subscribe(function (response) {
-                var info = response;
-                _this.info = info;
-                if (_this.info.length <= 0) {
-                    alert("Error en el servidor 5");
-                }
-                else {
-                    // if(!this.info.status){
-                    _this.datoMenu = "";
-                    var length = _this.info.length;
-                    for (var i = 0; i < length; i++) {
-                        _this.datoMenuIteracion = JSON.stringify(_this.info[i].mod);
-                        if (_this.datoMenu == "") {
-                            _this.datoMenu = _this.datoMenuIteracion;
-                        }
-                        else {
-                            _this.datoMenu = _this.datoMenu + "," + _this.datoMenuIteracion;
-                        }
-                    }
-                    ;
-                    _this.datoMenuMostrar = JSON.parse("[" + _this.datoMenu + "]");
-                    return _this.datoMenuMostrar;
-                    // }
-                }
-            }, function (error) {
-                window.location.reload();
-            });
-        }
-        else {
-            alert("Su sesión ha expirado, por favor ingrese nuevamente sus credenciales");
-            this.logout();
-        }
-    };
-    AppComponent.prototype.Onloguearse = function () {
-        var _this = this;
-        if (!this._loginService.checkCredentials(this._loginService.getToken())) {
-            this._loginService.signup(this.user).subscribe(function (response) {
-                var identity = response;
-                _this.identity = identity;
-                if (_this.identity.length <= 1) {
-                    alert("Error en el servidor 4");
-                }
-                else {
-                    if (!_this.identity.status) {
-                        localStorage.setItem('identity', JSON.stringify(identity));
-                        // sessionStorage.setItem('identity', JSON.stringify(identity));
-                        _this.user.gethash = "true";
-                        _this._loginService.signup(_this.user).subscribe(function (response) {
-                            var token = response;
-                            _this.token = token;
-                            if (_this.token.length <= 0) {
-                                alert("Error en el servidor 3");
-                            }
-                            else {
-                                if (!_this.token.status) {
-                                    localStorage.setItem('token', token);
-                                    // sessionStorage.setItem('token',token);
-                                    if (_this._loginService.checkCredentials(_this._loginService.getToken())) {
-                                        // this._router.navigate(['/principal']);
-                                        // window.location.href='/principal';
-                                        // this.funcionario = {
-                                        // 	'fun_id': this.identity.sub
-                                        // };
-                                        // this._solicitudService.jefeSolicitud(this.token,this.funcionario).subscribe(
-                                        // 	response => {
-                                        // 		let info = response;
-                                        // 		this.info15 = info;
-                                        // 		if(this.info15 > 0){
-                                        // 			localStorage.setItem('je', "S");
-                                        // 		}else{
-                                        // 			localStorage.setItem('je', "N");
-                                        // 		}
-                                        // if(this._loginService.checkCredentials(this._loginService.getToken())){
-                                        // this._router.navigate(['/principal']);
-                                        window.location.href = '/principal';
-                                        // else{
-                                        // 	this.mostrarmenufirma = 0;
-                                        // 	// }
-                                        // },error => {
-                                        // 	this.errorMessage = <any>error;
-                                        // 	if(this.errorMessage != null){
-                                        // 		console.log(this.errorMessage);
-                                        // 		alert("Error en la peticion de solicitudes");
-                                        // 	}
-                                        // });
-                                    }
-                                    else {
-                                        // this._router.navigate(['/']);
-                                        window.location.href = '/';
-                                        _this.logout();
-                                    }
-                                }
-                                else {
-                                    // this._router.navigate(['/']);
-                                    window.location.href = '/';
-                                    _this.logout();
-                                }
-                            }
-                            // }
-                        }, function (error) {
-                            _this.errorMessage = error;
-                            if (_this.errorMessage != null) {
-                                console.log(_this.errorMessage);
-                                alert("Error en la petición 2");
-                                _this.logout();
-                            }
-                        });
-                    }
-                }
-            }, function (error) {
-                _this.errorMessage = error;
-                if (_this.errorMessage != null) {
-                    console.log(_this.errorMessage);
-                    alert("Error en al iniciar Apache");
-                }
-            });
-        }
-    };
+    // menuUsuario(){
+    // 	this.identity = this._loginService.getIdentity();
+    // 	this.token = this._loginService.getToken();
+    // 	if(this._loginService.checkCredentials(this.token)){
+    // 		this.idfuncionario = {
+    // 			'id_fun': this.identity.sub
+    // 		};
+    // 		this._loginService.menuUsuario(this.idfuncionario).subscribe(
+    // 			response => {
+    // 				let info = response;
+    // 				this.info = info;
+    // 				if(this.info.length <=0){
+    // 					alert("Error en el servidor 5");
+    // 				}else{ 	
+    // 					// if(!this.info.status){
+    // 						this.datoMenu = "";
+    // 						var length = this.info.length;
+    // 						for (var i = 0; i < length; i++) {
+    // 							this.datoMenuIteracion = JSON.stringify(this.info[i].mod);
+    // 							if(this.datoMenu == ""){
+    // 								this.datoMenu = this.datoMenuIteracion;
+    // 							}else{
+    // 								this.datoMenu = this.datoMenu+","+this.datoMenuIteracion;
+    // 							}
+    // 						};  
+    // 						this.datoMenuMostrar = JSON.parse("["+this.datoMenu+"]");  
+    // 						return this.datoMenuMostrar;
+    // 						// }
+    // 					}
+    // 				},error => {
+    // 					window.location.reload();
+    // 				});
+    // 	}else{
+    // 		alert("Su sesión ha expirado, por favor ingrese nuevamente sus credenciales");
+    // 		this.logout();
+    // 	}
+    // }
+    // Onloguearse(){
+    // 	if(!this._loginService.checkCredentials(this._loginService.getToken())){
+    // 		this._loginService.signup(this.user).subscribe(
+    // 			response => {
+    // 				let identity = response;
+    // 				this.identity = identity;
+    // 				if(this.identity.length <= 1){
+    // 					alert("Error en el servidor 4");
+    // 				}else{ 	
+    // 					if(!this.identity.status){
+    // 						localStorage.setItem('identity', JSON.stringify(identity));
+    // 						// sessionStorage.setItem('identity', JSON.stringify(identity));
+    // 						this.user.gethash = "true";
+    // 						this._loginService.signup(this.user).subscribe(
+    // 							response => {
+    // 								let token = response;
+    // 								this.token = token;
+    // 								if(this.token.length <= 0){
+    // 									alert("Error en el servidor 3");
+    // 								}else{
+    // 									if(!this.token.status){
+    // 										localStorage.setItem('token',token);
+    // 										// sessionStorage.setItem('token',token);
+    // 										if(this._loginService.checkCredentials(this._loginService.getToken())){
+    // 											// this._router.navigate(['/principal']);
+    // 											// window.location.href='/principal';
+    // 											// this.funcionario = {
+    // 											// 	'fun_id': this.identity.sub
+    // 											// };
+    // 											// this._solicitudService.jefeSolicitud(this.token,this.funcionario).subscribe(
+    // 											// 	response => {
+    // 											// 		let info = response;
+    // 											// 		this.info15 = info;
+    // 											// 		if(this.info15 > 0){
+    // 											// 			localStorage.setItem('je', "S");
+    // 											// 		}else{
+    // 											// 			localStorage.setItem('je', "N");
+    // 											// 		}
+    // 													// if(this._loginService.checkCredentials(this._loginService.getToken())){
+    // 														// this._router.navigate(['/principal']);
+    // 														window.location.href='/principal';
+    // 														// else{
+    // 															// 	this.mostrarmenufirma = 0;
+    // 														// 	// }
+    // 														// },error => {
+    // 														// 	this.errorMessage = <any>error;
+    // 														// 	if(this.errorMessage != null){
+    // 														// 		console.log(this.errorMessage);
+    // 														// 		alert("Error en la peticion de solicitudes");
+    // 														// 	}
+    // 														// });
+    // 										}else{
+    // 											// this._router.navigate(['/']);
+    // 											window.location.href='/';
+    // 											this.logout();
+    // 										}
+    // 									}else{
+    // 										// this._router.navigate(['/']);
+    // 										window.location.href='/';
+    // 										this.logout();
+    // 									}
+    // 								}
+    // 							// }
+    // 						},
+    // 						error =>{
+    // 							this.errorMessage = <any>error;
+    // 							if(this.errorMessage != null){
+    // 								console.log(this.errorMessage);
+    // 								alert("Error en la petición 2");
+    // 								this.logout();
+    // 							}
+    // 						}
+    // 						);
+    // 					}
+    // 				}
+    // 			},
+    // 			error => {
+    // 				this.errorMessage = <any>error;
+    // 				if(this.errorMessage != null){
+    // 					console.log(this.errorMessage);
+    // 					alert("Error en al iniciar Apache");
+    // 				}
+    // 			}
+    // 			);
+    // 	}
+    // }
     AppComponent.prototype.logout = function () {
         this.salida = true;
         localStorage.removeItem('identity');

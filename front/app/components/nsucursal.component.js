@@ -15,7 +15,7 @@ var router_1 = require("@angular/router");
 // import {LoginService} from '../services/login.service';
 // import {SolicitudService} from '../services/solicitud.service';
 // import {TabMenuModule,MenuItem} from 'primeng/primeng';
-var PrincipalComponent = (function () {
+var NsucursalComponent = (function () {
     // public identity;
     // public token;
     // public funcionario;
@@ -42,15 +42,15 @@ var PrincipalComponent = (function () {
     // public datociudadtodos2;
     // public datoSolMostrara: Array<any>;
     // public datoSolMostrarp: Array<any>;
-    function PrincipalComponent(
+    function NsucursalComponent(
         // 	private _loginService: LoginService,
         // 	private _solicitudService: SolicitudService,
         _router, _route) {
         this._router = _router;
         this._route = _route;
-        this.titulo = "Componente Principal";
+        this.titulo = "Componente Nueva sucursal";
     }
-    PrincipalComponent.prototype.ngOnInit = function () {
+    NsucursalComponent.prototype.ngOnInit = function () {
         // this.menuUsuario();
         // this.identity = this._loginService.getIdentity();
         // this.token = this._loginService.getToken();
@@ -67,40 +67,23 @@ var PrincipalComponent = (function () {
         // };
         // this.OnVerDetalleSol();
     };
-    PrincipalComponent.prototype.NAlmacen = function () {
-        this._router.navigate(['/almacen']);
+    NsucursalComponent.prototype.OnMasSucursal = function () {
+        this._router.navigate(['/sucursal']);
     };
-    PrincipalComponent.prototype.NLocal = function () {
-        this._router.navigate(['/local']);
+    NsucursalComponent.prototype.OnGuardarSucursal = function () {
+        console.log("Se guardo la informacion de la sucursal");
+        window.location.href = '/principal';
     };
-    PrincipalComponent.prototype.NEmpleado = function () {
-        this._router.navigate(['/empleado']);
-    };
-    PrincipalComponent.prototype.NProveedor = function () {
-        this._router.navigate(['/proveedor']);
-    };
-    PrincipalComponent.prototype.NProducto = function () {
-        this._router.navigate(['/producto']);
-    };
-    PrincipalComponent.prototype.NCompra = function () {
-        this._router.navigate(['/compra']);
-    };
-    PrincipalComponent.prototype.NVenta = function () {
-        this._router.navigate(['/venta']);
-    };
-    PrincipalComponent.prototype.Inventario = function () {
-        this._router.navigate(['/inventario']);
-    };
-    return PrincipalComponent;
+    return NsucursalComponent;
 }());
-PrincipalComponent = __decorate([
+NsucursalComponent = __decorate([
     core_1.Component({
-        selector: "principal",
-        templateUrl: "app/view/principal.html" /*,
+        selector: "nsucursal",
+        templateUrl: "app/view/nsucursal.html" /*,
         providers: [LoginService, SolicitudService]*/
     }),
     __metadata("design:paramtypes", [router_1.Router,
         router_1.ActivatedRoute])
-], PrincipalComponent);
-exports.PrincipalComponent = PrincipalComponent;
-//# sourceMappingURL=principal.component.js.map
+], NsucursalComponent);
+exports.NsucursalComponent = NsucursalComponent;
+//# sourceMappingURL=nsucursal.component.js.map

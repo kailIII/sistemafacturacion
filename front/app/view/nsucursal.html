@@ -1,0 +1,38 @@
+{{titulo}}
+<form (ngSubmit)="OnGuardarSucursal()" #SucursalForm="ngForm">
+		<div>
+		<label>Datos Matriz</label>
+		<input type="checkbox">
+		<div>
+			<label>Nombre :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Ciudad :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Sector :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Dirección :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Telefono 1 :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Telefono 2 :</label>
+			<input type="text">
+		</div>
+		<div>
+			<label>Correo electrónico :</label>
+			<input type="text">
+		</div>
+	</div>
+	<br>
+	<input type="submit" value="Guardar y Salir" class="btn btn-primary"/>
+	<button type="button" (click)="OnMasSucursal()">Ingresar mas sucursales</button>
+</form>
