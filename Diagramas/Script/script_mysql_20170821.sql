@@ -1,7 +1,8 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     17/05/2017 18:43:50                          */
+/* Created on:     21/08/2017 20:25:45                          */
 /*==============================================================*/
+
 
 /*==============================================================*/
 /* Table: ACCESO_USUARIO                                        */
@@ -11,7 +12,7 @@ create table ACCESO_USUARIO
    ACC_ID               int not null,
    EMP_ID               int,
    ACC_NOMBREUSUARIO    varchar(20),
-   ACC_CLAVEUSUARIO     varchar(20),
+   ACC_CLAVEUSUARIO     varchar(80),
    primary key (ACC_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -47,6 +48,7 @@ create table BAJA
 (
    BAJ_ID               int not null,
    LOC_ID               int,
+   EMPLOC_ID            int,
    BAJ_FECHA            timestamp,
    BAJ_OBSERVACION      varchar(100),
    primary key (BAJ_ID)
@@ -120,6 +122,7 @@ create table CAJA_CIERRE
    CIER_ID              int not null,
    VEN_ID               int,
    CAJ_ID               int,
+   EMPLOC_ID            int,
    COM_ID               int,
    CIER_FECHA           timestamp,
    CIER_TOTAL           float,
@@ -446,6 +449,20 @@ create table DETALLE_INGRESO
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
+/* Table: DETALLE_KARDEX                                        */
+/*==============================================================*/
+create table DETALLE_KARDEX
+(
+   DETKAR_ID            int not null,
+   KAR_ID               int,
+   PRO_ID2              int,
+   DETKAR_CANT          int,
+   DETKAR_PVP           float,
+   DETKAR_TOTAL         float,
+   primary key (DETKAR_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*==============================================================*/
 /* Table: DETALLE_MOVILIZACION_INGRESO                          */
 /*==============================================================*/
 create table DETALLE_MOVILIZACION_INGRESO
@@ -594,6 +611,7 @@ create table FACTURA_COMPRA
 (
    FACCOM_ID            int not null,
    FORPAG_ID            int,
+   EMPLOC_ID            int,
    LOC_ID               int,
    EMPPRO_ID            int,
    FACCOM_NUMEROFACTURA char(9),
@@ -621,6 +639,7 @@ create table FACTURA_VENTA
    FACVEN_ID            int not null,
    CLI_ID               int,
    FORPAG_ID            int,
+   EMPLOC_ID            int,
    LOC_ID               int,
    FACVEN_NUMEROFACTURA char(9),
    FACVEN_SUBTOTAL      float,
@@ -722,6 +741,19 @@ create table INVENTARIO_LOCAL
    INVLOC_LOCALORIGEN   int,
    INVLOC_LOCALDESTINO  int,
    primary key (INVLOC_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*==============================================================*/
+/* Table: KARDEX                                                */
+/*==============================================================*/
+create table KARDEX
+(
+   KAR_ID               int not null,
+   EMPLOC_ID            int,
+   KAR_FECHA            timestamp,
+   KAR_TIPO             char(3),
+   KAR_SUBTOTAL         float,
+   primary key (KAR_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
@@ -996,6 +1028,9 @@ alter table ACCESO_USUARIO add constraint FK_EMP_ACCUSU foreign key (EMP_ID)
 alter table ASIGNACION_PRODUCTO add constraint FK_PED_ASIPRO foreign key (PED_ID)
       references PEDIDO (PED_ID) on delete restrict on update restrict;
 
+alter table BAJA add constraint FK_EMPLOC_BAJ foreign key (EMPLOC_ID)
+      references EMPLEADO_LOCAL (EMPLOC_ID) on delete restrict on update restrict;
+
 alter table BAJA add constraint FK_LOCSUC_BAJ foreign key (LOC_ID)
       references LOCAL_SUCURSAL (LOC_ID) on delete restrict on update restrict;
 
@@ -1016,6 +1051,9 @@ alter table CAJA_CIERRE add constraint FK_CAJ_CAJCIE foreign key (CAJ_ID)
 
 alter table CAJA_CIERRE add constraint FK_COM_CAJCIE foreign key (COM_ID)
       references COMPRA (COM_ID) on delete restrict on update restrict;
+
+alter table CAJA_CIERRE add constraint FK_EMPLOC_CAJCIE foreign key (EMPLOC_ID)
+      references EMPLEADO_LOCAL (EMPLOC_ID) on delete restrict on update restrict;
 
 alter table CAJA_CIERRE add constraint FK_VEN_CAJCIE foreign key (VEN_ID)
       references VENTA (VEN_ID) on delete restrict on update restrict;
@@ -1104,6 +1142,12 @@ alter table DETALLE_GASTO add constraint FK_PROEXT_DETGAS foreign key (PROEXT_ID
 alter table DETALLE_INGRESO add constraint FK_VEN_DETING foreign key (VEN_ID)
       references VENTA (VEN_ID) on delete restrict on update restrict;
 
+alter table DETALLE_KARDEX add constraint FK_KAR_DETKAR foreign key (KAR_ID)
+      references KARDEX (KAR_ID) on delete restrict on update restrict;
+
+alter table DETALLE_KARDEX add constraint FK_PRO_DETKAR foreign key (PRO_ID2)
+      references PRODUCTO (PRO_ID2) on delete restrict on update restrict;
+
 alter table DETALLE_MOVILIZACION_INGRESO add constraint FK_MOV_DETMOVING foreign key (MOV_ID)
       references MOVILIZACION (MOV_ID) on delete restrict on update restrict;
 
@@ -1143,6 +1187,9 @@ alter table EMPLEADO_LOCAL add constraint FK_EMP_EMPLOC foreign key (EMP_ID)
 alter table EMPLEADO_LOCAL add constraint FK_LOC_EMPLOC foreign key (LOC_ID)
       references LOCAL_SUCURSAL (LOC_ID) on delete restrict on update restrict;
 
+alter table FACTURA_COMPRA add constraint FK_EMPLOC_FACCOM foreign key (EMPLOC_ID)
+      references EMPLEADO_LOCAL (EMPLOC_ID) on delete restrict on update restrict;
+
 alter table FACTURA_COMPRA add constraint FK_EMPPRO_FACCOM foreign key (EMPPRO_ID)
       references EMPRESA_PROVEEDORA (EMPPRO_ID) on delete restrict on update restrict;
 
@@ -1154,6 +1201,9 @@ alter table FACTURA_COMPRA add constraint FK_LOCSUC_FACCOM foreign key (LOC_ID)
 
 alter table FACTURA_VENTA add constraint FK_CLI_FACVEN foreign key (CLI_ID)
       references CLIENTE (CLI_ID) on delete restrict on update restrict;
+
+alter table FACTURA_VENTA add constraint FK_EMPLOC_FACVEN foreign key (EMPLOC_ID)
+      references EMPLEADO_LOCAL (EMPLOC_ID) on delete restrict on update restrict;
 
 alter table FACTURA_VENTA add constraint FK_FORPAG_FACVEN foreign key (FORPAG_ID)
       references FORMA_PAGO (FORPAG_ID) on delete restrict on update restrict;
@@ -1221,6 +1271,9 @@ alter table INVENTARIO_LOCAL add constraint FK_LOCSUC_INVLOC foreign key (LOC_ID
 alter table INVENTARIO_LOCAL add constraint FK_PRO_INVLOC foreign key (PRO_ID2)
       references PRODUCTO (PRO_ID2) on delete restrict on update restrict;
 
+alter table KARDEX add constraint FK_EMPLOC_KAR foreign key (EMPLOC_ID)
+      references EMPLEADO_LOCAL (EMPLOC_ID) on delete restrict on update restrict;
+
 alter table LOCALIDAD add constraint FK_PROV_LOC foreign key (PROV_ID)
       references PROVINCIA (PROV_ID) on delete restrict on update restrict;
 
@@ -1266,3 +1319,10 @@ alter table SESION add constraint FK_EMPLOC_SES foreign key (EMPLOC_ID)
 alter table TRANSFERENCIA add constraint FK_CUE_TRA foreign key (CUE_ID)
       references CUENTA (CUE_ID) on delete restrict on update restrict;
 
+
+INSERT INTO `empleado` (`EMP_ID`, `EMP_NOMBRE`, `EMP_APELLIDO`, `EMP_DIRECCION`, `EMP_TELEFONO1`, `EMP_TELEFONO2`, `EMP_TIPOSANGRE`, `EMP_CORREO`, `EMP_AVISAREMERGENCIA`, `EMP_TELEFONOEMERGENCIA`, `EMP_PARENTEZCOEMERGENCIA`, `EMP_DESCRIPCIONALERGIAS`, `EMP_DESCRIPCIONGENERAL`, `EMP_ESTADO`, `EMP_FECHANACIMIENTO`) VALUES
+(1, 'Santiago', 'Benitez', 'Antonio de Ulloa N28-83 y Las Casas', '022521533', '0987574585', 'Orh+', 'sbenitez.sbe@gmail.com', 'Byron Benitez', '062953576', 'Padre', 'Ninguna', NULL, 'A', '1982-07-06');
+
+
+INSERT INTO `acceso_usuario` (`ACC_ID`, `EMP_ID`, `ACC_NOMBREUSUARIO`, `ACC_CLAVEUSUARIO`) VALUES
+(1, 1, '1002455630', '2889766b9dbdc4409eff0f85e1b4fd681639e199783030222f858dd79b393e12');
