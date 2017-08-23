@@ -82,6 +82,10 @@ class Empleado
      */
     private $empFechanacimiento;
 
+    /**
+     * @var string
+     */
+    private $empIdentificacion;
 
     /**
      * Get empId
@@ -428,5 +432,30 @@ class Empleado
     {
         return $this->empFechanacimiento;
     }
+
+    /**
+     * Set empIdentificacion
+     *
+     * @param string $empIdentificacion
+     *
+     * @return Empleado
+     */
+    public function setEmpIdentificacion($empIdentificacion)
+    {
+        $this->empIdentificacion = $empIdentificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get empIdentificacion
+     *
+     * @return string
+     */
+    public function getEmpIdentificacion()
+    {
+        return $this->empIdentificacion;
+    }
+
 }
 

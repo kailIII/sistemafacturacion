@@ -38,9 +38,9 @@ class PermisosSistema
     private $emploc;
 
     /**
-     * @var \DataBundle\Entity\PerfilUsuaModSis
+     * @var \DataBundle\Entity\PerfilUsuario
      */
-    private $pums;
+    private $perusu;
 
 
     /**
@@ -174,27 +174,27 @@ class PermisosSistema
     }
 
     /**
-     * Set pums
+     * Set perusu
      *
-     * @param \DataBundle\Entity\PerfilUsuaModSis $pums
+     * @param \DataBundle\Entity\PerfilUsuario $perusu
      *
      * @return PermisosSistema
      */
-    public function setPums(\DataBundle\Entity\PerfilUsuaModSis $pums = null)
+    public function setPerusu(\DataBundle\Entity\PerfilUsuario $perusu = null)
     {
-        $this->pums = $pums;
+        $this->perusu = $perusu;
 
         return $this;
     }
 
     /**
-     * Get pums
+     * Get perusu
      *
-     * @return \DataBundle\Entity\PerfilUsuaModSis
+     * @return \DataBundle\Entity\PerfilUsuario
      */
-    public function getPums()
+    public function getPerusu()
     {
-        return $this->pums;
+        return $this->perusu;
     }
 }
 

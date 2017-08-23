@@ -14,12 +14,6 @@ DataBundle\Entity\FormaPago:
         FK_EFE_FORPAG:
             columns:
                 - EFE_ID
-        FK_NOTCRE_FORPAG:
-            columns:
-                - NOTCRE_ID
-        FK_NOTDEB_FORPAG:
-            columns:
-                - NOTCRE_ID2
         FK_TRA_FORPAG:
             columns:
                 - TRA_ID
@@ -91,26 +85,6 @@ DataBundle\Entity\FormaPago:
             joinColumns:
                 EFE_ID:
                     referencedColumnName: EFE_ID
-            orphanRemoval: false
-        notcre:
-            targetEntity: NotaCredito
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                NOTCRE_ID:
-                    referencedColumnName: NOTCRE_ID
-            orphanRemoval: false
-        notcre2:
-            targetEntity: NotaDebito
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                NOTCRE_ID2:
-                    referencedColumnName: NOTCRE_ID2
             orphanRemoval: false
         tra:
             targetEntity: Transferencia

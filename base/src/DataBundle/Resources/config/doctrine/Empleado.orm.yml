@@ -107,4 +107,11 @@ DataBundle\Entity\Empleado:
             type: date
             nullable: true
             column: EMP_FECHANACIMIENTO
+        empIdentificacion:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: true
+            column: EMP_IDENTIFICACION
     lifecycleCallbacks: {  }

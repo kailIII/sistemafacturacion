@@ -5,9 +5,9 @@ DataBundle\Entity\PermisosSistema:
         FK_EMPLOC_PERSIS:
             columns:
                 - EMPLOC_ID
-        FK_PERUSUMODSIS_PERSIS:
+        FK_PERUSU_PERSIS:
             columns:
-                - PUMS_ID
+                - PERUSU_ID
     id:
         persisId:
             type: integer
@@ -52,14 +52,14 @@ DataBundle\Entity\PermisosSistema:
                 EMPLOC_ID:
                     referencedColumnName: EMPLOC_ID
             orphanRemoval: false
-        pums:
-            targetEntity: PerfilUsuaModSis
+        perusu:
+            targetEntity: PerfilUsuario
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                PUMS_ID:
-                    referencedColumnName: PUMS_ID
+                PERUSU_ID:
+                    referencedColumnName: PERUSU_ID
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -48,16 +48,6 @@ class FormaPago
     private $efe;
 
     /**
-     * @var \DataBundle\Entity\NotaCredito
-     */
-    private $notcre;
-
-    /**
-     * @var \DataBundle\Entity\NotaDebito
-     */
-    private $notcre2;
-
-    /**
      * @var \DataBundle\Entity\Transferencia
      */
     private $tra;
@@ -239,54 +229,6 @@ class FormaPago
     public function getEfe()
     {
         return $this->efe;
-    }
-
-    /**
-     * Set notcre
-     *
-     * @param \DataBundle\Entity\NotaCredito $notcre
-     *
-     * @return FormaPago
-     */
-    public function setNotcre(\DataBundle\Entity\NotaCredito $notcre = null)
-    {
-        $this->notcre = $notcre;
-
-        return $this;
-    }
-
-    /**
-     * Get notcre
-     *
-     * @return \DataBundle\Entity\NotaCredito
-     */
-    public function getNotcre()
-    {
-        return $this->notcre;
-    }
-
-    /**
-     * Set notcre2
-     *
-     * @param \DataBundle\Entity\NotaDebito $notcre2
-     *
-     * @return FormaPago
-     */
-    public function setNotcre2(\DataBundle\Entity\NotaDebito $notcre2 = null)
-    {
-        $this->notcre2 = $notcre2;
-
-        return $this;
-    }
-
-    /**
-     * Get notcre2
-     *
-     * @return \DataBundle\Entity\NotaDebito
-     */
-    public function getNotcre2()
-    {
-        return $this->notcre2;
     }
 
     /**

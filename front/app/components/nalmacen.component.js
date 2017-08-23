@@ -72,7 +72,8 @@ var NalmacenComponent = (function () {
     };
     NalmacenComponent.prototype.OnGuardarAlmacen = function () {
         console.log("Se guardo la informacion de la sucursal");
-        window.location.href = '/principal';
+        // window.location.href='/principal';
+        this._router.navigate(['/principal']);
     };
     return NalmacenComponent;
 }());

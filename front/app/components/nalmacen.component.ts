@@ -74,7 +74,8 @@ export class NalmacenComponent implements OnInit{
 
 OnGuardarAlmacen(){
 	console.log("Se guardo la informacion de la sucursal");
-		window.location.href='/principal';
+		// window.location.href='/principal';
+		this._router.navigate(['/principal']);
 }
 // OnVerDetalleSol(){
 // 		this._solicitudService.reporteSolicitud(this.token,this.funcionario).subscribe(
