@@ -12,13 +12,13 @@
 
 SET FOREIGN_KEY_CHECKS=0;
 
-DROP DATABASE IF EXISTS `sbefacsis`;
+/*DROP DATABASE IF EXISTS `sbefacsis`;
 
 CREATE DATABASE `sbefacsis`
     CHARACTER SET 'utf8'
     COLLATE 'utf8_general_ci';
 
-USE `sbefacsis`;
+USE `sbefacsis`;*/
 
 #
 # Structure for the `empleado` table : 

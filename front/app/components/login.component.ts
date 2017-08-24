@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 	ngOnInit(){
 		this.errorMsg = false;
 		this.user = {
-			'cedula': "",
+			'email': "",
 			'password': "",
 			'gethash': "false"
 		};
