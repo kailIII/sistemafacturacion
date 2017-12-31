@@ -10,7 +10,7 @@
 <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
 	<div>
 		<label>Correo electrónico:</label>
-		<input type="text" id="cedula" name="cedula" #cedula="ngModel" [(ngModel)]="user.cedula" required autocomplete="on" (click)="corregirDatos()"/>
+		<input type="text" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required autocomplete="on" (click)="corregirDatos()"/>
 		<!-- <div *ngIf="!cedula.valid && cedula.touched">El cedula es necesario</div> -->
 	</div>
 	<div>

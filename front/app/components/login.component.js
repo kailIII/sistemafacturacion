@@ -23,7 +23,7 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
         this.errorMsg = false;
         this.user = {
-            'cedula': "",
+            'email': "",
             'password': "",
             'gethash': "false"
         };
